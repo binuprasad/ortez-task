@@ -1,37 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
-class ExpandableText extends StatefulWidget {
-  ExpandableText(this.text);
+class ReadMoreTextWidget extends StatelessWidget {
+  const ReadMoreTextWidget({
+    super.key,
+  });
 
-  final String text;
-  bool isExpanded = false;
-
-  @override
-  _ExpandableTextState createState() => _ExpandableTextState();
-}
-
-class _ExpandableTextState extends State<ExpandableText>
-    with TickerProviderStateMixin<ExpandableText> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      AnimatedSize(
-          
-          duration: const Duration(milliseconds: 500),
-          child: ConstrainedBox(
-              constraints: widget.isExpanded
-                  ? BoxConstraints()
-                  : BoxConstraints(maxHeight: 50.0),
-              child: Text(
-                widget.text,
-                softWrap: true,
-                overflow: TextOverflow.fade,
-              ))),
-      widget.isExpanded
-          ? ConstrainedBox(constraints: BoxConstraints())
-          : TextButton(
-          child: const Text('...'),
-          onPressed: () => setState(() => widget.isExpanded = true))
-    ]);
+    return const ReadMoreText(
+      'AT ther is som the quality of its services and to  ther is som the quality of its services and to analyze traffic tomyu isosl iisjfkckhk thjdfje ;pren o[soim dp;pr sot amet cpmsectoire cp;it[ar]]]',
+      style: TextStyle(color: Colors.black54),
+      trimLines: 2,
+      textAlign: TextAlign.justify,
+      trimMode: TrimMode.Line,
+      trimCollapsedText: '..More',
+      trimExpandedText: ' ..less',
+      lessStyle: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold),
+      moreStyle: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold),
+    );
   }
 }
